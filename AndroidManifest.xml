@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.darshancomputing.alockblock"
+    android:sharedUserId="com.darshancomputing.alockblock"
+    android:versionCode="1"
+    android:versionName="1.0.0"
+>
+  <application
+      android:label="@string/app_full_name"
+      android:icon="@drawable/battery"
+      android:hardwareAccelerated="true"
+      android:process="com.darshancomputing.alockblock"
+  >
+    <activity
+        android:name=".ALockBlockActivity"
+        android:label="@string/app_full_name"
+        android:stateNotNeeded="true"
+        android:launchMode="singleTask"
+    >
+      <intent-filter android:label="@string/app_launcher_name">
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+
+    <activity
+        android:name=".SettingsActivity"
+        android:excludeFromRecents="true"
+    />
+
+    <activity
+        android:name=".SettingsHelpActivity"
+        android:theme="@style/bi_help_theme"
+        android:stateNotNeeded="true"
+        android:excludeFromRecents="true"
+    />
+
+    <activity
+        android:name=".HelpActivity"
+        android:theme="@style/bi_help_theme"
+        android:stateNotNeeded="true"
+        android:excludeFromRecents="true"
+    />
+
+    <service
+        android:name=".ALockBlockService"
+        android:process="com.darshancomputing.alockblock.LBS"
+        android:icon="@drawable/battery"
+    />
+
+    <receiver
+        android:name=".BootCompletedReceiver"
+        android:enabled="true"
+        android:exported="true"
+        android:process="com.darshancomputing.alockblock.BCR"
+    >
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.PACKAGE_REPLACED" />
+        <data android:scheme="package" android:path="com.darshancomputing.alockblock" />
+      </intent-filter>
+    </receiver>
+
+  </application>
+
+  <uses-sdk
+      android:minSdkVersion="7"
+      android:targetSdkVersion="22"
+  />
+
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+  <supports-screens
+      android:smallScreens="true"
+      android:normalScreens="true"
+      android:largeScreens="true"
+      android:anyDensity="true"
+  />
+</manifest>
