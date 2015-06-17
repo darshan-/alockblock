@@ -73,16 +73,6 @@ public class ALockBlockActivity extends FragmentActivity {
         sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && viewPager.getCurrentItem() != 1) {
-            viewPager.setCurrentItem(1);
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
-
     public class ALockBlockPagerAdapter extends FragmentPagerAdapter {
         public ALockBlockPagerAdapter(FragmentManager fm) {
             super(fm);

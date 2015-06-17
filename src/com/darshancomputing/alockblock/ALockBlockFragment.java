@@ -58,7 +58,6 @@ public class ALockBlockFragment extends Fragment {
     private boolean serviceConnected;
 
     private View view;
-    private Boolean disallowLockButton;
     private Button toggle_lock_screen_b;
 
     private static final String LOG_TAG = "A Lock Block";
@@ -82,7 +81,6 @@ public class ALockBlockFragment extends Fragment {
 
             switch (incoming.what) {
             case ALockBlockService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                setEnablednessOfLockButton();
                 serviceMessenger = incoming.replyTo;
                 sendServiceMessage(ALockBlockService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
@@ -235,35 +233,6 @@ public class ALockBlockFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        setEnablednessOfLockButton();
-    }
-
-    public static class ConfirmDisableKeyguardDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            return new AlertDialog.Builder(activity)
-                .setTitle(activity.res.getString(R.string.confirm_disable))
-                .setMessage(activity.res.getString(R.string.confirm_disable_hint))
-                .setCancelable(false) // TODO: Doesn't work... Just remove and accept being cancelable?
-                .setPositiveButton(activity.res.getString(R.string.yes),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            ((ALockBlockActivity) activity).aLockBlockFragment.setDisableLocking(true);
-                            di.cancel();
-                        }
-                    })
-                .setNegativeButton(activity.res.getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            di.cancel();
-                        }
-                    })
-                .create();
-        }
-    }
-
     public static class ConfirmCloseDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -332,12 +301,7 @@ public class ALockBlockFragment extends Fragment {
             if (activity.sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false)) {
                 setDisableLocking(false);
             } else {
-                if (activity.settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
-                    DialogFragment df = new ConfirmDisableKeyguardDialogFragment();
-                    df.show(getFragmentManager(), "TODO: What is this string for?");
-                } else {
-                    setDisableLocking(true);
-                }
+                setDisableLocking(true);
             }
         }
     };
@@ -351,9 +315,5 @@ public class ALockBlockFragment extends Fragment {
 
     private void bindButtons() {
         toggle_lock_screen_b.setOnClickListener(tlsButtonListener);
-    }
-
-    private void setEnablednessOfLockButton() {
-        toggle_lock_screen_b.setEnabled(! activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false));
     }
 }
