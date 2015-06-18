@@ -291,7 +291,10 @@ public class ALockBlockService extends Service {
     }
 
     private void updateKeyguardNotification() {
-        mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
+        if (kl != null)
+            mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
+        else
+            mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
     }
 
     private final BroadcastReceiver mUserPresentReceiver = new BroadcastReceiver() {

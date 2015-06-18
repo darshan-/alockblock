@@ -59,6 +59,7 @@ public class ALockBlockFragment extends Fragment {
 
     private View view;
     private Button toggle_lock_screen_b;
+    private ImageView padlock;
 
     private static final String LOG_TAG = "A Lock Block";
 
@@ -102,6 +103,7 @@ public class ALockBlockFragment extends Fragment {
         view = inflater.inflate(R.layout.current_info, container, false);
 
         toggle_lock_screen_b = (Button) view.findViewById(R.id.toggle_lock_screen_b);
+        padlock = (ImageView) view.findViewById(R.id.padlock);
 
         updateLockscreenButton();
         bindButtons();
@@ -265,10 +267,13 @@ public class ALockBlockFragment extends Fragment {
     private void updateLockscreenButton() {
         activity.loadSettingsFiles();
 
-        if (activity.sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false))
+        if (activity.sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false)) {
             toggle_lock_screen_b.setText(activity.res.getString(R.string.reenable_lock_screen));
-        else
+            padlock.setImageResource(R.drawable.padlock_unlocked);
+        } else {
             toggle_lock_screen_b.setText(activity.res.getString(R.string.disable_lock_screen));
+            padlock.setImageResource(R.drawable.padlock_locked);
+        }
     }
 
     private void setDisableLocking(boolean b) {
@@ -305,5 +310,6 @@ public class ALockBlockFragment extends Fragment {
 
     private void bindButtons() {
         toggle_lock_screen_b.setOnClickListener(tlsButtonListener);
+        padlock.setOnClickListener(tlsButtonListener);
     }
 }

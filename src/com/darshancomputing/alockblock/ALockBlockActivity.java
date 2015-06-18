@@ -93,8 +93,7 @@ public class ALockBlockActivity extends FragmentActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            if (position == 1) return res.getString(R.string.tab_current_info).toUpperCase();
-            else               return res.getString(R.string.tab_history).toUpperCase();
+            return "";
         }
     }
 }

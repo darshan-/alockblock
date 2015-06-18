@@ -13,23 +13,16 @@
   />
 
   <CheckBoxPreference
-      android:key="notify_when_kg_disabled"
-      android:title="@string/pref_notify_when_kg_disabled"
-      android:summary="@string/pref_notify_when_kg_disabled_summary"
-      android:defaultValue="true"
+      android:key="auto_disable_lock_screen"
+      android:title="@string/pref_auto_disable"
+      android:summary="@string/pref_auto_disable_summary"
+      android:defaultValue="false"
   />
 
   <CheckBoxPreference
       android:key="finish_after_toggle_lock"
       android:title="@string/pref_finish_after_toggle_lock"
       android:summary="@string/pref_finish_after_toggle_lock_summary"
-      android:defaultValue="false"
-  />
-
-  <CheckBoxPreference
-      android:key="auto_disable_lock_screen"
-      android:title="@string/pref_auto_disable"
-      android:summary="@string/pref_auto_disable_summary"
       android:defaultValue="false"
   />
 </PreferenceScreen>
