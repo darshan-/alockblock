@@ -1,12 +1,30 @@
 #!/usr/bin/env ruby
 
+# TODO: also purge plurals and string-arrays
+
 require 'nokogiri'
 
-string_to_remove = ['pref_cat_themes',
-                    'theme_settings',
-                    'theme_settings_summary',
-                    'theme_settings_help']
+string_names = {}
 string_files = []
+
+data = [{:matches => `grep R.string src/com/darshancomputing/alockblock/*.java`,
+          :regex => /R.string.([a-z_]*)/},
+        {:matches => `grep -R --exclude-dir=.svn @string res AndroidManifest.xml`,
+          :regex => /@string\/([a-z0-9_]*)/}]
+
+data.each do |set|
+  set[:matches].each_line do |s|
+    r = set[:regex]
+
+    while(true)
+      m = s.match(r)
+      break if not m
+
+      string_names[m[1]] = true
+      s = m.post_match
+    end
+  end
+end
 
 Dir.glob('res/values*').each do |d|
   file = d << "/strings.xml"
@@ -23,7 +41,7 @@ string_files.each do |file|
   doc = Nokogiri::XML(strings_xml)
 
   doc.xpath('//string').each do |str_el|
-    if string_to_remove.include?(str_el.attr('name')) then
+    if not string_names[str_el.attr('name')] then
       puts " - Deleting " << str_el.attr('name')
       str_el.remove()
     end
