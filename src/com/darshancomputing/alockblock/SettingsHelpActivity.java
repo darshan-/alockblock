@@ -33,7 +33,6 @@ public class SettingsHelpActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        String pref_screen = intent.getStringExtra(SettingsActivity.EXTRA_SCREEN);
         res = getResources();
 
         // Stranglely disabled by default for API level 14+
@@ -42,12 +41,8 @@ public class SettingsHelpActivity extends Activity {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        if (pref_screen == null) {
-            setContentView(R.layout.main_settings_help);
-            setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else {
-            setContentView(R.layout.main_settings_help);
-        }
+        setContentView(R.layout.main_settings_help);
+        setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
 
         TextView tv;
         MovementMethod linkMovement = LinkMovementMethod.getInstance();

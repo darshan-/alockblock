@@ -147,16 +147,6 @@ public class ALockBlockFragment extends Fragment {
         }
     }
 
-    /*private void restartIfLanguageChanged() {
-        String curLanguage = activity.settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
-        if (curLanguage.equals(oldLanguage))
-            return;
-
-        Str.overrideLanguage(activity.res, getWindowManager(), curLanguage);
-        mStartActivity(ALockBlockActivity.class);
-        activity.finish();
-    }*/
-
     @Override
     public void onResume() {
         super.onResume();

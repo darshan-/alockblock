@@ -8,7 +8,7 @@
 >
   <application
       android:label="@string/app_full_name"
-      android:icon="@drawable/battery"
+      android:icon="@drawable/app_icon"
       android:hardwareAccelerated="true"
       android:process="com.darshancomputing.alockblock"
   >
@@ -47,7 +47,7 @@
     <service
         android:name=".ALockBlockService"
         android:process="com.darshancomputing.alockblock.LBS"
-        android:icon="@drawable/battery"
+        android:icon="@drawable/app_icon"
     />
 
     <receiver
