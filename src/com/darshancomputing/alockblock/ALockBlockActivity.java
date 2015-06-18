@@ -77,13 +77,6 @@ public class ALockBlockActivity extends Activity {
         str = new Str(res);
         loadSettingsFiles();
 
-        //setHasOptionsMenu(true);
-
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
-            getActionBar().setHomeButtonEnabled(true);
-            getActionBar().setDisplayShowHomeEnabled(true);
-        }
-
         if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
             SharedPreferences.Editor editor = sp_store.edit();
