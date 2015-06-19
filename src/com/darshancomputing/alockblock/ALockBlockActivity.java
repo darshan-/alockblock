@@ -91,12 +91,6 @@ public class ALockBlockActivity extends Activity {
 
         updateLockscreenButtons();
         bindButtons();
-
-        serviceConnection = new ALockBlockService.RemoteConnection(messenger);
-
-        biServiceIntent = new Intent(context, ALockBlockService.class);
-        context.startService(biServiceIntent);
-        bindService();
     }
 
     public void loadSettingsFiles() {
@@ -143,6 +137,22 @@ public class ALockBlockActivity extends Activity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        serviceConnection = new ALockBlockService.RemoteConnection(messenger);
+
+        biServiceIntent = new Intent(context, ALockBlockService.class);
+        context.startService(biServiceIntent);
+        bindService();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
         if (serviceConnected) {
             context.unbindService(serviceConnection);
             serviceConnected = false;
