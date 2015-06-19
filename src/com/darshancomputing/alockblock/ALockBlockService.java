@@ -47,7 +47,6 @@ import java.util.Date;
 import java.util.HashSet;
 
 public class ALockBlockService extends Service {
-    private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
     private PendingIntent mainWindowPendingIntent;
     private PendingIntent updatePredictorPendingIntent;
@@ -77,7 +76,7 @@ public class ALockBlockService extends Service {
     private static HashSet<Integer> widgetIds = new HashSet<Integer>();
     private static AppWidgetManager widgetManager;
 
-    private static final String LOG_TAG = "com.darshancomputing.alockblock - ALockBlockService";
+    private static final String LOG_TAG = "A Lock Block - ALockBlockService";
 
     private static final int NOTIFICATION_PRIMARY      = 1;
     private static final int NOTIFICATION_KG_UNLOCKED  = 2;
@@ -152,12 +151,22 @@ public class ALockBlockService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        reloadSettings(false);
+
         return Service.START_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         return messenger.getBinder();
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        if (kl == null)
+            stopSelf();
+
+        return false;
     }
 
     public class MessageHandler extends Handler {
@@ -207,6 +216,7 @@ public class ALockBlockService extends Service {
 
         // Messages the service sends to clients
         public static final int CLIENT_SERVICE_CONNECTED = 0;
+        public static final int CLIENT_KEYGUARD_UPDATED = 1;
 
         public Messenger serviceMessenger;
         private Messenger clientMessenger;
@@ -288,6 +298,7 @@ public class ALockBlockService extends Service {
         }
 
         updateKeyguardNotification();
+        updateClientKeyguardStatus();
     }
 
     private void updateKeyguardNotification() {
@@ -295,6 +306,12 @@ public class ALockBlockService extends Service {
             mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
         else
             mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
+    }
+
+    private void updateClientKeyguardStatus() {
+        for (Messenger messenger : clientMessengers) {
+            sendClientMessage(messenger, RemoteConnection.CLIENT_KEYGUARD_UPDATED);
+        }
     }
 
     private final BroadcastReceiver mUserPresentReceiver = new BroadcastReceiver() {
@@ -306,15 +323,4 @@ public class ALockBlockService extends Service {
             }
         }
     };
-
-    private String formatTime(Date d) {
-        String format = android.provider.Settings.System.getString(getContentResolver(),
-                                                                   android.provider.Settings.System.TIME_12_24);
-        if (format == null || format.equals("12")) {
-            return java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT,
-                                                        java.util.Locale.getDefault()).format(d);
-        } else {
-            return (new java.text.SimpleDateFormat("HH:mm")).format(d);
-        }
-    }
 }

@@ -233,12 +233,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 
-        if (key.equals(KEY_AUTO_DISABLE_LOCKING)) {
-            if (mSharedPreferences.getBoolean(key, false)) {
-                // Register receiver for both plugged and unplugged broadcasts
-            }
-        }
-
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {
                 setEnablednessOfDeps(i);

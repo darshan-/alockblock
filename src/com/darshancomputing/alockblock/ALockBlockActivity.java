@@ -64,7 +64,7 @@ public class ALockBlockActivity extends Activity {
     private Button toggle_lock_screen_b;
     private ImageView padlock;
 
-    private static final String LOG_TAG = "A Lock Block";
+    private static final String LOG_TAG = "A Lock Block - ALockBlockActivity";
 
     private final Handler mHandler = new Handler();
 
@@ -89,7 +89,7 @@ public class ALockBlockActivity extends Activity {
         toggle_lock_screen_b = (Button) findViewById(R.id.toggle_lock_screen_b);
         padlock = (ImageView) findViewById(R.id.padlock);
 
-        updateLockscreenButton();
+        updateLockscreenButtons();
         bindButtons();
 
         SharedPreferences.Editor editor = sp_store.edit();
@@ -127,6 +127,9 @@ public class ALockBlockActivity extends Activity {
             case ALockBlockService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
                 serviceMessenger = incoming.replyTo;
                 sendServiceMessage(ALockBlockService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+                break;
+            case ALockBlockService.RemoteConnection.CLIENT_KEYGUARD_UPDATED:
+                updateLockscreenButtons();
                 break;
             default:
                 super.handleMessage(incoming);
@@ -228,7 +231,7 @@ public class ALockBlockActivity extends Activity {
         finish();
     }
 
-    private void updateLockscreenButton() {
+    private void updateLockscreenButtons() {
         loadSettingsFiles();
 
         if (sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false)) {
@@ -240,7 +243,7 @@ public class ALockBlockActivity extends Activity {
         }
     }
 
-    private void setDisableLocking(boolean b) {
+     private void setDisableLocking(boolean b) {
         SharedPreferences.Editor editor = sp_store.edit();
         editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, b);
         editor.commit();
@@ -249,7 +252,7 @@ public class ALockBlockActivity extends Activity {
         outgoing.what = ALockBlockService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
         try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
 
-        updateLockscreenButton();
+        updateLockscreenButtons();
 
         if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_TOGGLE_LOCK, false)) finish();
     }
