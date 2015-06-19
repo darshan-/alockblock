@@ -21,24 +21,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class BootCompletedReceiver extends BroadcastReceiver {
+public class PlugInOutReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences sp_store = context.getSharedPreferences("sp_store", 0);
 
-        if (sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false)) {
-            // Unlike BatteryBot, I think I prefer NOT to re-disable keyguard after reboot.  Instead, let's
-            //  just update sp_store to reflect that we are no longer disabling it.  If you change your mind,
-            //  here is where we can start the Service so it can re-disable it (in which case, don't change
-            //  the boolean here, obviously).
-            SharedPreferences.Editor sps_editor = sp_store.edit();
-            sps_editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false);
-            sps_editor.commit();
-        }
-
         if (settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
-            // Register receiver for both plugged and unplugged broadcasts
+            if (Intent.ACTION_POWER_CONNECTED.equals(intent.getAction())) {
+                // Start Service and ask it to disable keyguard
+            } else if (Intent.ACTION_POWER_DISCONNECTED.equals(intent.getAction())) {
+                // Ask Service to re-enable keyguard
+            }
         }
     }
 }

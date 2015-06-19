@@ -51,7 +51,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
     public static final String KEY_FINISH_AFTER_TOGGLE_LOCK = "finish_after_toggle_lock";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
-    public static final String KEY_DISALLOW_DISABLE_LOCK_SCREEN = "disallow_disable_lock_screen";
     public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
@@ -233,6 +232,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+
+        if (key.equals(KEY_AUTO_DISABLE_LOCKING)) {
+            if (mSharedPreferences.getBoolean(key, false)) {
+                // Register receiver for both plugged and unplugged broadcasts
+            }
+        }
 
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {
