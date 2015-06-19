@@ -62,21 +62,6 @@
   <string name="help_cat_contact" formatted="false">Контакты</string>
   <string name="help_contact" formatted="false">Если у вас есть вопросы, проблемы или комментарии, пожалуйста <a href="mailto:support@batterybot.info">напишите мне</a>.</string>
   <string name="pref_hint" formatted="false">Подсказка: Для вызова помощи нажмите MENU.</string>
-  <string name="battery_graphic" formatted="false">Изображение батарейки</string>
-  <string name="charge_percentage" formatted="false">Заряд в процентах</string>
-  <string name="percentage_first" formatted="false">Проценты, Батарейка</string>
-  <string name="battery_first" formatted="false">Батарейка, Проценты</string>
-  <string name="time_remaining" formatted="false">Оставшееся время</string>
-  <string name="time_since_status_change" formatted="false">Время, прошедшее с момента изменения состояния</string>
-  <string name="vital_signs" formatted="false">Критически важные параметры</string>
-  <string name="condensed" formatted="false">Сжатый</string>
-  <string name="normal" formatted="false">Обычный</string>
-  <string name="verbose" formatted="false">Детальный</string>
-  <string name="system_default" formatted="false">Системные умолчания</string>
-  <string name="black" formatted="false">Черный</string>
-  <string name="white" formatted="false">Белый</string>
-  <string name="ics_blue" formatted="false">Android ICS синий</string>
-  <string name="custom" formatted="false">Настраиваемый...</string>
   <string name="pref_main_notification_priority" formatted="false">Приоритет главного уведомления</string>
   <string name="pref_cat_keyguard" formatted="false">Блокировка экрана / клавиатуры</string>
   <string name="pref_cat_keyguard_help" formatted="false">Система Android разрешает приложениям включать или отключать так называемую блокировку экрана / клавиатуры. Более детальных настроек не существует. К примеру, нельзя указать кнопки включения экрана.</string>
@@ -86,10 +71,6 @@
   <string name="pref_auto_disable" formatted="false">Автоматически отключить блокировку экрана</string>
   <string name="pref_auto_disable_summary" formatted="false">Отключить блокировку экрана во время зарядки?</string>
   <string name="pref_auto_disable_help" formatted="false">Если выбрано, то при каждом подключении устройства к сети BatteryBot отключит блокировку экрана, а при каждом отключении от сети включит ее вновь.</string>
-  <string name="predictor_sensitive" formatted="false">Чувствительный</string>
-  <string name="predictor_conservative" formatted="false">Консервативный</string>
-  <string name="predictor_since_status_change" formatted="false">С момента изменения состояния</string>
-  <string name="predictor_long_term_ave" formatted="false">Среднее за большой период</string>
   <string name="boot_pref_always" formatted="false">Всегда</string>
   <string name="boot_pref_never" formatted="false">Никогда</string>
   <string name="boot_pref_if_running" formatted="false">Если было запущено при выключении</string>

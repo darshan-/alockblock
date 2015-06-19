@@ -55,21 +55,6 @@
   <string name="help_subcat_translators" formatted="false">Vertalers</string>
   <string name="help_cat_contact" formatted="false">Contact</string>
   <string name="pref_hint" formatted="false">(Druk op MENU voor help)</string>
-  <string name="battery_graphic" formatted="false">Batterijicoon</string>
-  <string name="charge_percentage" formatted="false">Ladingsniveau</string>
-  <string name="percentage_first" formatted="false">Percentage, batterij</string>
-  <string name="battery_first" formatted="false">Batterij, percentage</string>
-  <string name="time_remaining" formatted="false">Tijd resterend</string>
-  <string name="time_since_status_change" formatted="false">Tijd sinds wijziging in status</string>
-  <string name="vital_signs" formatted="false">Gezondheid</string>
-  <string name="condensed" formatted="false">Minimaal</string>
-  <string name="normal" formatted="false">Normaal</string>
-  <string name="verbose" formatted="false">Uitgebreid</string>
-  <string name="system_default" formatted="false">Standaard</string>
-  <string name="black" formatted="false">Zwart</string>
-  <string name="white" formatted="false">Wit</string>
-  <string name="ics_blue" formatted="false">Blauw</string>
-  <string name="custom" formatted="false">Aangepast...</string>
   <string name="pref_main_notification_priority" formatted="false">Prioriteit van melding</string>
   <string name="pref_cat_keyguard" formatted="false">Schermvergendeling</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android geeft apps toestemming om de schermvergrendeling aan en uit te schakelen.</string>

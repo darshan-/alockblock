@@ -157,21 +157,6 @@
   </string>
 
   <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>
-  <string formatted="false" name="battery_graphic">Battery Graphic</string>
-  <string formatted="false" name="charge_percentage">Charge Percentage</string>
-  <string formatted="false" name="percentage_first">Percentage, Battery</string>
-  <string formatted="false" name="battery_first">Battery, Percentage</string>
-  <string formatted="false" name="time_remaining">Time Remaining</string>
-  <string formatted="false" name="time_since_status_change">Time Since Status Change</string>
-  <string formatted="false" name="vital_signs">Vital Signs</string>
-  <string formatted="false" name="condensed">Condensed</string>
-  <string formatted="false" name="normal">Normal</string>
-  <string formatted="false" name="verbose">Verbose</string>
-  <string formatted="false" name="system_default">System Default</string>
-  <string formatted="false" name="black">Black</string>
-  <string formatted="false" name="white">White</string>
-  <string formatted="false" name="ics_blue">Android ICS Blue</string>
-  <string formatted="false" name="custom">Custom...</string>
   <string formatted="false" name="pref_main_notification_priority">Main Notification Priority</string>
   <string formatted="false" name="pref_cat_keyguard">Lock Screen / Keyguard</string>
   <string formatted="false" name="pref_cat_keyguard_help">
@@ -198,7 +183,7 @@
   <string formatted="false" name="pref_auto_disable">Auto-disable Lock Screen</string>
   <string formatted="false" name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
   <string formatted="false" name="pref_auto_disable_help">
-    If checked, then whenever the device is plugged in, BatteryBot
+    If checked, then whenever the device is plugged in, A Lock Block
     will disable the lock screen, and whenever the device is
     unplugged, it will enable it again.\n
 
@@ -206,10 +191,6 @@
     manually pass through the lock screen once before it will be
     auto-disabled.
   </string>
-  <string formatted="false" name="predictor_sensitive">Sensitive</string>
-  <string formatted="false" name="predictor_conservative">Conservative</string>
-  <string formatted="false" name="predictor_since_status_change">Since Status Change</string>
-  <string formatted="false" name="predictor_long_term_ave">Long-term Average</string>
   <!--string name="pref_cat_device_specific_help"></string-->
   <!--string name="pref_alarm_enabled_summary"></string-->
   <!--string name="pref_alarm_ringtone_summary"></string-->

@@ -60,6 +60,7 @@ public class ALockBlockService extends Service {
 
     private KeyguardLock kl;
     private KeyguardManager km;
+    private boolean holding_lock = false;
     private android.os.Vibrator mVibrator;
     private android.media.AudioManager mAudioManager;
 
@@ -78,11 +79,9 @@ public class ALockBlockService extends Service {
 
     private static final String LOG_TAG = "A Lock Block - ALockBlockService";
 
-    private static final int NOTIFICATION_PRIMARY      = 1;
     private static final int NOTIFICATION_KG_UNLOCKED  = 2;
 
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
-    public static final String KEY_SERVICE_DESIRED = "serviceDesired";
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
     public static final String LAST_SDK_API = "last_sdk_api";
 
@@ -97,17 +96,11 @@ public class ALockBlockService extends Service {
 
     private final Handler mHandler = new Handler();
 
-    private final Runnable mNotify = new Runnable() {
-        public void run() {
-            startForeground(NOTIFICATION_PRIMARY, mainNotification);
-            mHandler.removeCallbacks(mNotify);
-        }
-    };
-
     private final Runnable runDisableKeyguard = new Runnable() {
         public void run() {
             kl = km.newKeyguardLock(getPackageName());
             kl.disableKeyguard();
+            holding_lock = true;
             updateKeyguardNotification();
         }
     };
@@ -144,7 +137,7 @@ public class ALockBlockService extends Service {
     @Override
     public void onDestroy() {
         setEnablednessOfKeyguard(true);
-        mHandler.removeCallbacks(mNotify);
+
         mNotificationManager.cancelAll();
         stopForeground(true);
     }
@@ -163,10 +156,10 @@ public class ALockBlockService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        if (kl == null)
+        if (! (sp_store.getBoolean(KEY_DISABLE_LOCKING, false)))
             stopSelf();
 
-        return false;
+        return true;
     }
 
     public class MessageHandler extends Handler {
@@ -272,27 +265,31 @@ public class ALockBlockService extends Service {
         settings_editor.commit();
     }
 
-    private void doNotify() {
-        mHandler.post(mNotify);
-    }
-
     private void setEnablednessOfKeyguard(boolean enabled) {
         if (enabled) {
+            if (! holding_lock) return;
             if (kl != null) {
                 unregisterReceiver(mUserPresentReceiver);
                 mHandler.removeCallbacks(runDisableKeyguard);
                 kl.reenableKeyguard();
                 kl = null;
             }
+
+            holding_lock = false;
+
+            if (clientMessengers.size() == 0) stopSelf();
         } else {
             if (km.inKeyguardRestrictedInputMode()) {
                 registerReceiver(mUserPresentReceiver, userPresent);
             } else {
-                if (kl != null)
+                if (kl != null) {
                     kl.reenableKeyguard();
-                else
+                    holding_lock = false;
+                } else {
                     registerReceiver(mUserPresentReceiver, userPresent);
+                }
 
+                mHandler.removeCallbacks(runDisableKeyguard);
                 mHandler.postDelayed(runDisableKeyguard, 300);
             }
         }
@@ -303,9 +300,9 @@ public class ALockBlockService extends Service {
 
     private void updateKeyguardNotification() {
         if (kl != null)
-            mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
+            startForeground(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
         else
-            mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
+            stopForeground(true);
     }
 
     private void updateClientKeyguardStatus() {

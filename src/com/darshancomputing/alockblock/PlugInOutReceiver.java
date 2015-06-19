@@ -35,10 +35,15 @@ public class PlugInOutReceiver extends BroadcastReceiver {
         SharedPreferences.Editor editor = sp_store.edit();
 
         if (settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
-            if (Intent.ACTION_POWER_CONNECTED.equals(intent.getAction()))
+            if (Intent.ACTION_POWER_CONNECTED.equals(intent.getAction())) {
+                if (sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false))
+                    return;
                 editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, true);
-            else if (Intent.ACTION_POWER_DISCONNECTED.equals(intent.getAction()))
+            } else if (Intent.ACTION_POWER_DISCONNECTED.equals(intent.getAction())) {
+                if (! sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false))
+                    return;
                 editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false);
+            }
 
             editor.commit();
 

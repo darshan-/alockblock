@@ -56,21 +56,6 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="help_contact" formatted="false">Jeśli masz pytanie, problem lub uwagi, proszę <a href="mailto:support@batterybot.info">napisz do mnie</a>.</string>
   <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij MENU po pomoc.</string>
-  <string name="battery_graphic" formatted="false">Bateria graficzna</string>
-  <string name="charge_percentage" formatted="false">Procent naładowania</string>
-  <string name="percentage_first" formatted="false">Procent, bateria</string>
-  <string name="battery_first" formatted="false">Bateria, procent</string>
-  <string name="time_remaining" formatted="false">Pozostały czas</string>
-  <string name="time_since_status_change" formatted="false">Czas od zmiany stanu</string>
-  <string name="vital_signs" formatted="false">Stan zdrowia</string>
-  <string name="condensed" formatted="false">Zagęszczony</string>
-  <string name="normal" formatted="false">Normalny</string>
-  <string name="verbose" formatted="false">Rozwlekły</string>
-  <string name="system_default" formatted="false">Ustawienia domyślne</string>
-  <string name="black" formatted="false">Czarny</string>
-  <string name="white" formatted="false">Biały</string>
-  <string name="ics_blue" formatted="false">Android ICS Niebieski</string>
-  <string name="custom" formatted="false">Własny...</string>
   <string name="pref_main_notification_priority" formatted="false">Główny priorytet powiadomienia</string>
   <string name="pref_cat_keyguard" formatted="false">Blokada ekranu</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android pozwala aplikacjom na wyłączenie i włączenie. co nazywamy \"keyguard\", lub po prostu blokadą ekranu. Pomiędzy włączeniem i wyłączeniem nie ma kontroli — nie wiem, którym klawiszem włączyć ekran.</string>

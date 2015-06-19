@@ -62,21 +62,6 @@
   <string name="help_cat_contact" formatted="false">للتواصل</string>
   <string name="help_contact" formatted="false">اذا كنت تملك اسئلة او مشاكل رجاء <a href="mailto:support@batterybot.info">راسلني على</a>.\n</string>
   <string name="pref_hint" formatted="false">تلميح:اضغط على الخيارات للمساعدة</string>
-  <string name="battery_graphic" formatted="false">عرض البطارية</string>
-  <string name="charge_percentage" formatted="false">نسبة الشحن المئوية</string>
-  <string name="percentage_first" formatted="false">النسبة المئوية,البطارية</string>
-  <string name="battery_first" formatted="false">البطارية,النسبة المئوية</string>
-  <string name="time_remaining" formatted="false">الوقت المتبقي</string>
-  <string name="time_since_status_change" formatted="false">منذ وقت تغيير الحالة</string>
-  <string name="vital_signs" formatted="false">علامات حيوية</string>
-  <string name="condensed" formatted="false">موجز</string>
-  <string name="normal" formatted="false">عادي</string>
-  <string name="verbose" formatted="false">مسهب</string>
-  <string name="system_default" formatted="false">النظام الافتراضي</string>
-  <string name="black" formatted="false">اسود</string>
-  <string name="white" formatted="false">ابيض</string>
-  <string name="ics_blue" formatted="false">نظام الاندرويد ايس كريم ساندويش ازرق</string>
-  <string name="custom" formatted="false">مخصص</string>
   <string name="pref_main_notification_priority" formatted="false">اولوية الاشعارات الرئيسية</string>
   <string name="pref_cat_keyguard" formatted="false">قفل الشاشة / حارس المفاتيح</string>
   <string name="pref_cat_keyguard_help" formatted="false">الاندرويد عادة يقوم بتعطيل وتمكين حارس المفاتيح وانت تعتقد انه مثل قفل الشاشة عند اعادة تكرار هذه الحالة سوف تفقد السيطرة على هاتفك كمثال انك لاتستطيع ان توقد شاشة هاتفك</string>
@@ -86,10 +71,6 @@
   <string name="pref_auto_disable" formatted="false">قفل الشاشة بشكل اوتوماتيكي</string>
   <string name="pref_auto_disable_summary" formatted="false">تعطيل قفل الشاشة عند السحن</string>
   <string name="pref_auto_disable_help" formatted="false">اذا تم تمكين هذا الخيار فسوف يتم تعطيل قفل الشاشة بشكل اوتوماتيكي عند الشحن وظهور علامة موصول اما اذا فصل الجهاز فسوف يمكن قفل الشاشة مرة اخرى\n\nان هذا الخيار يعتبر مفيد في العمل الشاق و القيادة ايضا</string>
-  <string name="predictor_sensitive" formatted="false">الحساس</string>
-  <string name="predictor_conservative" formatted="false">المعتدل</string>
-  <string name="predictor_since_status_change" formatted="false">منذ تغيير الحالة</string>
-  <string name="predictor_long_term_ave" formatted="false">طويل الاجل</string>
   <string name="boot_pref_always" formatted="false">دائما</string>
   <string name="boot_pref_never" formatted="false">ابدا</string>
   <string name="boot_pref_if_running" formatted="false">اذا كان مغلق</string>

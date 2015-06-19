@@ -60,13 +60,6 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="help_contact" formatted="false">Wenn Sie eine Frage,ein Problem oder einen Kommentar haben, teilen Sie es uns bitte unter <a href="mailto:support@batterybot.info">E-Mail</a>.</string>
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
-  <string name="battery_graphic" formatted="false">Akkudarstellung</string>
-  <string name="charge_percentage" formatted="false">Aufladung Prozent</string>
-  <string name="percentage_first" formatted="false">Prozentanteil, Akku</string>
-  <string name="battery_first" formatted="false">Akku, Prozentanteil</string>
-  <string name="time_remaining" formatted="false">Verbleibende Restlaufzeit</string>
-  <string name="time_since_status_change" formatted="false">Vergangene Zeit seit Statusänderung</string>
-  <string name="vital_signs" formatted="false">Vitalzeichen</string>
   <string name="pref_cat_keyguard" formatted="false">Bildschirm- und Tastatursperre</string>
   <string name="pref_finish_after_toggle_lock" formatted="false">Nach Umschalten verlassen</string>
   <string name="pref_finish_after_toggle_lock_summary" formatted="false">Hauptfenster unmittelbar nach dem Ein-/Ausschalten verlassen?</string>

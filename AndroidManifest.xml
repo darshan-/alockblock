@@ -62,6 +62,18 @@
     </receiver>
 
     <receiver
+        android:name=".PackageReplacedReceiver"
+        android:enabled="true"
+        android:exported="true"
+        android:process="com.darshancomputing.alockblock.PRR"
+    >
+      <intent-filter>
+        <action android:name="android.intent.action.PACKAGE_REPLACED" />
+        <data android:scheme="package" android:path="com.darshancomputing.alockblock" />
+      </intent-filter>
+    </receiver>
+
+    <receiver
         android:name=".PlugInOutReceiver"
         android:enabled="true"
         android:exported="true"

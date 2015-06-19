@@ -62,21 +62,6 @@
   <string name="help_cat_contact" formatted="false">問い合わせ</string>
   <string name="help_contact" formatted="false">もし、 質問、問題、またはコメントなどがあれば、 <a href="mailto:support@batterybot.info">私にメール</a> をお送りください。</string>
   <string name="pref_hint" formatted="false">ヒント: ヘルプはメニューを押してください。</string>
-  <string name="battery_graphic" formatted="false">バッテリー画像</string>
-  <string name="charge_percentage" formatted="false">残量パーセント</string>
-  <string name="percentage_first" formatted="false">パーセント、バッテリー</string>
-  <string name="battery_first" formatted="false">バッテリー、パーセント</string>
-  <string name="time_remaining" formatted="false">残時間</string>
-  <string name="time_since_status_change" formatted="false">ステータス変更からの時間</string>
-  <string name="vital_signs" formatted="false">バイタルサイン</string>
-  <string name="condensed" formatted="false">圧縮</string>
-  <string name="normal" formatted="false">通常</string>
-  <string name="verbose" formatted="false">詳細</string>
-  <string name="system_default" formatted="false">システムデフォルト</string>
-  <string name="black" formatted="false">黒</string>
-  <string name="white" formatted="false">白</string>
-  <string name="ics_blue" formatted="false">Android ICS 青</string>
-  <string name="custom" formatted="false">カスタマイズ...</string>
   <string name="pref_main_notification_priority" formatted="false">メイン通知の優先度</string>
   <string name="pref_cat_keyguard" formatted="false">ロック画面 / キーガード</string>
   <string name="pref_cat_keyguard_help" formatted="false">あなたがおそらくロック画面として使用している \"キーガード\" と呼ばれるアプリを、Android が無効にしたり、再度有効にできるようにします。 しかし、単に無効にしたり、再度有効にするだけで、 どのキーでロック解除するかなど、それ以上の制御はありません。</string>
@@ -86,10 +71,6 @@
   <string name="pref_auto_disable" formatted="false">ロック画面を自動的に無効にする</string>
   <string name="pref_auto_disable_summary" formatted="false">充電中にロック画面を無効にしますか?</string>
   <string name="pref_auto_disable_help" formatted="false">チェックした場合、デバイスに充電プラグが差し込まれると、 BatteryBot はロック画面を無効にします。プラグを抜くと 再度有効にします。\n\nこのオプションを有効にしても、自動的に無効になる前に ロックされた画面は、手動で一度ロック解除する必要があることに ご注意ください。</string>
-  <string name="predictor_sensitive" formatted="false">高感度</string>
-  <string name="predictor_conservative" formatted="false">保守的</string>
-  <string name="predictor_since_status_change" formatted="false">ステータスが変わったら</string>
-  <string name="predictor_long_term_ave" formatted="false">長期平均</string>
   <string name="boot_pref_always" formatted="false">常に</string>
   <string name="boot_pref_never" formatted="false">なし</string>
   <string name="boot_pref_if_running" formatted="false">シャットダウン時に実行中の場合</string>

@@ -92,10 +92,6 @@ public class ALockBlockActivity extends Activity {
         updateLockscreenButtons();
         bindButtons();
 
-        SharedPreferences.Editor editor = sp_store.edit();
-        editor.putBoolean(ALockBlockService.KEY_SERVICE_DESIRED, true);
-        editor.commit();
-
         serviceConnection = new ALockBlockService.RemoteConnection(messenger);
 
         biServiceIntent = new Intent(context, ALockBlockService.class);
@@ -110,7 +106,7 @@ public class ALockBlockActivity extends Activity {
 
     public void bindService() {
         if (! serviceConnected) {
-            context.bindService(biServiceIntent, serviceConnection, 0);
+            context.bindService(biServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
             serviceConnected = true;
         }
     }
@@ -213,22 +209,6 @@ public class ALockBlockActivity extends Activity {
         default:
             return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void closeApp() {
-        SharedPreferences.Editor editor = sp_store.edit();
-        editor.putBoolean(ALockBlockService.KEY_SERVICE_DESIRED, false);
-        editor.commit();
-
-        finishActivity(1);
-
-        if (serviceConnected) {
-            context.unbindService(serviceConnection);
-            context.stopService(biServiceIntent);
-            serviceConnected = false;
-        }
-
-        finish();
     }
 
     private void updateLockscreenButtons() {
