@@ -89,7 +89,7 @@ public class ALockBlockActivity extends Activity {
         toggle_lock_screen_b = (Button) findViewById(R.id.toggle_lock_screen_b);
         padlock = (ImageView) findViewById(R.id.padlock);
 
-        updateLockscreenButtons();
+        updateLockScreenButtons();
         bindButtons();
     }
 
@@ -119,7 +119,7 @@ public class ALockBlockActivity extends Activity {
                 sendServiceMessage(ALockBlockService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
             case ALockBlockService.RemoteConnection.CLIENT_KEYGUARD_UPDATED:
-                updateLockscreenButtons();
+                updateLockScreenButtons();
                 break;
             default:
                 super.handleMessage(incoming);
@@ -165,6 +165,8 @@ public class ALockBlockActivity extends Activity {
 
         if (serviceMessenger != null)
             sendServiceMessage(ALockBlockService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+
+        updateLockScreenButtons();
     }
 
     @Override
@@ -210,7 +212,7 @@ public class ALockBlockActivity extends Activity {
         }
     }
 
-    private void updateLockscreenButtons() {
+    private void updateLockScreenButtons() {
         loadSettingsFiles();
 
         if (sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false)) {
@@ -231,9 +233,7 @@ public class ALockBlockActivity extends Activity {
         outgoing.what = ALockBlockService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
         try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
 
-        updateLockscreenButtons();
-
-        if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_TOGGLE_LOCK, false)) finish();
+        updateLockScreenButtons();
     }
 
     /* Toggle Lock Screen */

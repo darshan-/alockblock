@@ -16,7 +16,7 @@
     <TextView style="@style/help_text" android:text="@string/pref_cat_keyguard_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_auto_disable" />
     <TextView style="@style/help_text" android:text="@string/pref_auto_disable_help" />
-    <!--TextView style="@style/help_pref" android:text="@string/pref_finish_after_toggle_lock" /-->
-    <!--TextView style="@style/help_text" android:text="@string/pref_finish_after_toggle_lock_help" /-->
+    <TextView style="@style/help_pref" android:text="@string/pref_reenable_from_notification" />
+    <TextView style="@style/help_text" android:text="@string/pref_reenable_from_notification_help" />
   </LinearLayout>
 </ScrollView>

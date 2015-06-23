@@ -48,9 +48,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String SETTINGS_FILE = "com.darshancomputing.alockblock_preferences";
     public static final String SP_STORE_FILE = "sp_store";
 
-    public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
-    public static final String KEY_FINISH_AFTER_TOGGLE_LOCK = "finish_after_toggle_lock";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
+    public static final String KEY_REENABLE_FROM_NOTIFICATION = "reenable_from_notification";
     public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
@@ -64,6 +63,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final String[] RESET_SERVICE = {KEY_AUTO_DISABLE_LOCKING};
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                                            KEY_REENABLE_FROM_NOTIFICATION,
                                                                             KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
     };
 

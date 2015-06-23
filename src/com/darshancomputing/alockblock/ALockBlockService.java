@@ -86,6 +86,9 @@ public class ALockBlockService extends Service {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String LAST_SDK_API = "last_sdk_api";
 
+    public static final String EXTRA_ACTION = "com.darshancomputing.alockblock.action";
+    public static final String ACTION_REENABLE = "re-enable";
+
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final  Class[]  EMPTY_CLASS_ARRAY = {};
@@ -115,19 +118,6 @@ public class ALockBlockService extends Service {
         loadSettingsFiles(context);
         sdkVersioning();
 
-        Intent mainWindowIntent = new Intent(context, ALockBlockActivity.class);
-        mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
-
-        kgUnlockedNotification = new NotificationCompat.Builder(this)
-            .setSmallIcon(R.drawable.kg_unlocked)
-            .setContentTitle("Lock Screen Disabled")
-            .setContentText("A Lock Block")
-            .setContentIntent(mainWindowPendingIntent)
-            .setShowWhen(false)
-            .setOngoing(true)
-            .setPriority(NotificationCompat.PRIORITY_MAX)
-            .build();
-
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 
         if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
@@ -144,6 +134,14 @@ public class ALockBlockService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        String action = intent.getStringExtra(EXTRA_ACTION);
+
+        if (ACTION_REENABLE.equals(action)) {
+            SharedPreferences.Editor editor = sp_store.edit();
+            editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false);
+            editor.commit();
+        }
+
         reloadSettings(false);
 
         return Service.START_STICKY;
@@ -299,6 +297,27 @@ public class ALockBlockService extends Service {
     }
 
     private void updateKeyguardNotification() {
+        Intent mainWindowIntent = new Intent(context, ALockBlockActivity.class);
+        mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
+        ComponentName comp = new ComponentName(getPackageName(), ALockBlockService.class.getName());
+        Intent reEnableIntent = new Intent().setComponent(comp).putExtra(EXTRA_ACTION, ACTION_REENABLE);
+        PendingIntent reEnablePendingIntent = PendingIntent.getService(this, 0, reEnableIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        NotificationCompat.Builder kgunb = new NotificationCompat.Builder(this)
+            .setSmallIcon(R.drawable.kg_unlocked)
+            .setContentTitle("Lock Screen Disabled")
+            .setContentText("A Lock Block")
+            .setContentIntent(mainWindowPendingIntent)
+            .setShowWhen(false)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_MAX);
+
+        if (settings.getBoolean(SettingsActivity.KEY_REENABLE_FROM_NOTIFICATION, false))
+            kgunb.addAction(R.drawable.ic_menu_login, "Re-enable", reEnablePendingIntent);
+
+        kgUnlockedNotification = kgunb.build();
+
         if (kl != null)
             startForeground(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
         else

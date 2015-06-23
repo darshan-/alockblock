@@ -166,20 +166,6 @@
     more control — I can\'t control which keys turn the screen on, for
     example.
   </string>
-  <string formatted="false" name="pref_finish_after_toggle_lock">Exit After Toggling</string>
-  <string formatted="false" name="pref_finish_after_toggle_lock_summary">Exit main window immediately after dis/reenabling?</string>
-  <string formatted="false" name="pref_finish_after_toggle_lock_help">
-    If you\'re someone for whom every keystroke (or touchscreen press)
-    matters, you\'ll probably want to enable this.  If your goal is to
-    simply disable or reenable the lock screen and then get back to
-    what you\'re doing, this keeps you from having to press the BACK
-    key.  Just pull down the notification bar, press on BatteryBot,
-    and press the button to toggle the lock screen: three
-    screen presses and you\'re back to what you were doing.\n
-
-    \nFor obvious reasons, you can only enable this if the previous
-    setting is disabled, and vice versa.
-  </string>
   <string formatted="false" name="pref_auto_disable">Auto-disable Lock Screen</string>
   <string formatted="false" name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
   <string formatted="false" name="pref_auto_disable_help">
@@ -190,6 +176,13 @@
     \nNote that with this option enabled, you will still have to
     manually pass through the lock screen once before it will be
     auto-disabled.
+  </string>
+  <string formatted="false" name="pref_reenable_from_notification">Re-enable From Notification</string>
+  <string formatted="false" name="pref_reenable_from_notification_summary">Add button to notification to re-enable lock screen?</string>
+  <string formatted="false" name="pref_reenable_from_notification_help">
+    If checked, then on devices that support notification actions (Android 4.1+),
+    a button will be added to allow re-enabling the lock screen from the
+    notification.
   </string>
   <!--string name="pref_cat_device_specific_help"></string-->
   <!--string name="pref_alarm_enabled_summary"></string-->
