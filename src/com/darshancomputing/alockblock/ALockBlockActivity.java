@@ -188,17 +188,6 @@ public class ALockBlockActivity extends Activity {
         return true;
     }
 
-    private void toggleShowNotification() {
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(ALockBlockService.KEY_SHOW_NOTIFICATION,
-                              ! sp_store.getBoolean(ALockBlockService.KEY_SHOW_NOTIFICATION, true));
-            editor.commit();
-
-            Message outgoing = Message.obtain();
-            outgoing.what = ALockBlockService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
-            try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

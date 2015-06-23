@@ -46,6 +46,8 @@ import android.widget.RemoteViews;
 import java.util.Date;
 import java.util.HashSet;
 
+import android.support.v4.app.NotificationCompat;
+
 public class ALockBlockService extends Service {
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
     private PendingIntent mainWindowPendingIntent;
@@ -82,17 +84,11 @@ public class ALockBlockService extends Service {
     private static final int NOTIFICATION_KG_UNLOCKED  = 2;
 
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
-    public static final String KEY_SHOW_NOTIFICATION = "show_notification";
     public static final String LAST_SDK_API = "last_sdk_api";
 
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final  Class[]  EMPTY_CLASS_ARRAY = {};
-
-    /* Global variables for these Notification Runnables */
-    private Notification mainNotification;
-    private String mainNotificationTopLine, mainNotificationBottomLine;
-    private RemoteViews notificationRV;
 
     private final Handler mHandler = new Handler();
 
@@ -122,11 +118,15 @@ public class ALockBlockService extends Service {
         Intent mainWindowIntent = new Intent(context, ALockBlockActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
-        kgUnlockedNotification = new Notification(R.drawable.kg_unlocked, null, 0);
-        kgUnlockedNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-
-        kgUnlockedNotification.setLatestEventInfo(context, "Lock Screen Disabled",
-                                                  "Press to re-enable", mainWindowPendingIntent);
+        kgUnlockedNotification = new NotificationCompat.Builder(this)
+            .setSmallIcon(R.drawable.kg_unlocked)
+            .setContentTitle("Lock Screen Disabled")
+            .setContentText("A Lock Block")
+            .setContentIntent(mainWindowPendingIntent)
+            .setShowWhen(false)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
+            .build();
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 
