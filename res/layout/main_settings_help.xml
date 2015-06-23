@@ -18,5 +18,7 @@
     <TextView style="@style/help_text" android:text="@string/pref_auto_disable_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_reenable_from_notification" />
     <TextView style="@style/help_text" android:text="@string/pref_reenable_from_notification_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_always_show_notification" />
+    <TextView style="@style/help_text" android:text="@string/pref_always_show_notification_help" />
   </LinearLayout>
 </ScrollView>

@@ -50,6 +50,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_REENABLE_FROM_NOTIFICATION = "reenable_from_notification";
+    public static final String KEY_ALWAYS_SHOW_NOTIFICATION = "always_show_notification";
     public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
@@ -64,6 +65,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY,
                                                                             KEY_REENABLE_FROM_NOTIFICATION,
+                                                                            KEY_ALWAYS_SHOW_NOTIFICATION,
                                                                             KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
     };
 

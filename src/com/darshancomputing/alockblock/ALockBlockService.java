@@ -66,8 +66,6 @@ public class ALockBlockService extends Service {
     private android.os.Vibrator mVibrator;
     private android.media.AudioManager mAudioManager;
 
-    private Notification kgUnlockedNotification;
-
     private Context context;
     private Resources res;
     private Str str;
@@ -88,6 +86,7 @@ public class ALockBlockService extends Service {
 
     public static final String EXTRA_ACTION = "com.darshancomputing.alockblock.action";
     public static final String ACTION_REENABLE = "re-enable";
+    public static final String ACTION_DISABLE = "disable";
 
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
@@ -100,7 +99,7 @@ public class ALockBlockService extends Service {
             kl = km.newKeyguardLock(getPackageName());
             kl.disableKeyguard();
             holding_lock = true;
-            updateKeyguardNotification();
+            maximize();
         }
     };
 
@@ -127,8 +126,6 @@ public class ALockBlockService extends Service {
     @Override
     public void onDestroy() {
         setEnablednessOfKeyguard(true);
-
-        mNotificationManager.cancelAll();
         stopForeground(true);
     }
 
@@ -139,6 +136,10 @@ public class ALockBlockService extends Service {
         if (ACTION_REENABLE.equals(action)) {
             SharedPreferences.Editor editor = sp_store.edit();
             editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false);
+            editor.commit();
+        } else if (ACTION_DISABLE.equals(action)) {
+            SharedPreferences.Editor editor = sp_store.edit();
+            editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, true);
             editor.commit();
         }
 
@@ -265,7 +266,10 @@ public class ALockBlockService extends Service {
 
     private void setEnablednessOfKeyguard(boolean enabled) {
         if (enabled) {
+            minimize();
+
             if (! holding_lock) return;
+
             if (kl != null) {
                 unregisterReceiver(mUserPresentReceiver);
                 mHandler.removeCallbacks(runDisableKeyguard);
@@ -292,11 +296,13 @@ public class ALockBlockService extends Service {
             }
         }
 
-        updateKeyguardNotification();
         updateClientKeyguardStatus();
     }
 
-    private void updateKeyguardNotification() {
+    private void maximize() {
+        mNotificationManager.cancelAll();
+        stopForeground(true);
+
         Intent mainWindowIntent = new Intent(context, ALockBlockActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
@@ -316,12 +322,36 @@ public class ALockBlockService extends Service {
         if (settings.getBoolean(SettingsActivity.KEY_REENABLE_FROM_NOTIFICATION, false))
             kgunb.addAction(R.drawable.ic_menu_login, "Re-enable", reEnablePendingIntent);
 
-        kgUnlockedNotification = kgunb.build();
+        startForeground(NOTIFICATION_KG_UNLOCKED, kgunb.build());
+    }
 
-        if (kl != null)
-            startForeground(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
-        else
-            stopForeground(true);
+    private void minimize() {
+        mNotificationManager.cancelAll();
+        stopForeground(true);
+
+        if (!settings.getBoolean(SettingsActivity.KEY_ALWAYS_SHOW_NOTIFICATION, false))
+            return;
+
+        Intent mainWindowIntent = new Intent(context, ALockBlockActivity.class);
+        mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
+        ComponentName comp = new ComponentName(getPackageName(), ALockBlockService.class.getName());
+        Intent disableIntent = new Intent().setComponent(comp).putExtra(EXTRA_ACTION, ACTION_DISABLE);
+        PendingIntent disablePendingIntent = PendingIntent.getService(this, 0, disableIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        NotificationCompat.Builder kgunb = new NotificationCompat.Builder(this)
+            .setSmallIcon(R.drawable.kg_unlocked)
+            .setContentTitle("Lock Screen Enabled")
+            .setContentText("A Lock Block")
+            .setContentIntent(mainWindowPendingIntent)
+            .setShowWhen(false)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_MIN);
+
+        if (settings.getBoolean(SettingsActivity.KEY_REENABLE_FROM_NOTIFICATION, false))
+            kgunb.addAction(R.drawable.ic_menu_login, "Disable", disablePendingIntent);
+
+        mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgunb.build());
     }
 
     private void updateClientKeyguardStatus() {

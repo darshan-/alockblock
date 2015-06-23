@@ -184,6 +184,23 @@
     a button will be added to allow re-enabling the lock screen from the
     notification.
   </string>
+  <string formatted="false" name="pref_always_show_notification">Always Show Notification</string>
+  <string formatted="false" name="pref_always_show_notification_summary">Always show notification, even when lock screen is not disabled?</string>
+  <string formatted="false" name="pref_always_show_notification_help">
+    If checked, then the notification will always be shown, even when
+    the lock screen is not disabled.  It will be shown at minimum
+    priority when the lock screen is not disabled.  If the previous
+    option (\"Re-enable From Notification\") is checked, then a button
+    will be added (on devices that support this) that will allow you
+    to disable the lock screen from this minimum-priority
+    notification.\n
+
+    \nNote: Minimum priority is a feature of Android 4.1 and up, which
+    places a notification at the bottom of the tray but doesn\'t show
+    an icon in the status bar.  If you regularly manually disable the
+    lock screen, this is a way to keep A Lock Block closer to your
+    fingertips.
+  </string>
   <!--string name="pref_cat_device_specific_help"></string-->
   <!--string name="pref_alarm_enabled_summary"></string-->
   <!--string name="pref_alarm_ringtone_summary"></string-->

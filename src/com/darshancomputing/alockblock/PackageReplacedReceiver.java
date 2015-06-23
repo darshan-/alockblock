@@ -24,9 +24,11 @@ import android.preference.PreferenceManager;
 public class PackageReplacedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences sp_store = context.getSharedPreferences("sp_store", 0);
 
-        if (sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false)) {
+        if (sp_store.getBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false) ||
+            settings.getBoolean(SettingsActivity.KEY_ALWAYS_SHOW_NOTIFICATION, false)) {
             ComponentName comp = new ComponentName(context.getPackageName(),
                                                    ALockBlockService.class.getName());
             context.startService(new Intent().setComponent(comp));
