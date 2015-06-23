@@ -282,12 +282,15 @@ public class ALockBlockService extends Service {
             if (clientMessengers.size() == 0) stopSelf();
         } else {
             if (km.inKeyguardRestrictedInputMode()) {
+                notifyNeedUnlock();
                 registerReceiver(mUserPresentReceiver, userPresent);
             } else {
                 if (kl != null) {
                     kl.reenableKeyguard();
                     holding_lock = false;
                 } else {
+                    // This is just a bit of a hack to make it safe to unregister later without restriction.
+                    //   The other option is to have a boolean keep track of whether it is registered
                     registerReceiver(mUserPresentReceiver, userPresent);
                 }
 
@@ -350,6 +353,25 @@ public class ALockBlockService extends Service {
 
         if (settings.getBoolean(SettingsActivity.KEY_REENABLE_FROM_NOTIFICATION, false))
             kgunb.addAction(R.drawable.ic_menu_login, "Disable", disablePendingIntent);
+
+        mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgunb.build());
+    }
+
+    private void notifyNeedUnlock() {
+        mNotificationManager.cancelAll();
+        stopForeground(true);
+
+        Intent mainWindowIntent = new Intent(context, ALockBlockActivity.class);
+        mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
+        NotificationCompat.Builder kgunb = new NotificationCompat.Builder(this)
+            .setSmallIcon(R.drawable.kg_unlocked)
+            .setContentTitle("Please Unlock the Screen")
+            .setContentText("A Lock Block")
+            .setContentIntent(mainWindowPendingIntent)
+            .setShowWhen(false)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_MAX);
 
         mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgunb.build());
     }
