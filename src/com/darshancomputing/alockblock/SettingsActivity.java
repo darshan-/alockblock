@@ -62,6 +62,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
     public static final String KEY_FIRST_RUN = "first_run";
+    public static final String KEY_PRO_UNLOCKED = "pro_unlocked";
 
     private static final String[] PARENTS    = {};
     private static final String[] DEPENDENTS = {};
@@ -76,6 +77,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                                             KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
     };
 
+    private static final String[] PRO_ONLY_SETTINGS = {KEY_AUTO_DISABLE_LOCKING,
+                                                       KEY_REENABLE_FROM_NOTIFICATION,
+                                                       KEY_ALWAYS_SHOW_NOTIFICATION
+    };
     private static final String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqC3K734TqYyYxMq1OXq1PlCTrFMS/hke/kxulUefLAiptysQXtDlX6epQJBObzY/3Kw/rb+k6df4GtNHr8FrZ8dyYwDIE4YvnERzEErVc6A5x7gJ3KUe8E47vPQ/MnRMhqu/O16t5aSJrUwd9/cMv32xmHRTpDA/qfOdP+BA0lxovp9HbGliZn56N6cOBFTEL8BAdCLiFiuToLCtHXf12eOS954bucUNr+vIiYXoT4S8C6goauvKhiqApyI+bPsh67yLtSD98IqESQEkDmcr7eAHSuc3NdX7VvydeDxTzBvbdyyFRWzRqK6X9ac7IABdyUmSsmzfqj/d7WMv62zhEwIDAQAB";
 
     private static final String SKU_PRO = "pro_features";
@@ -92,6 +97,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
+
+    private static SharedPreferences sp_store;
 
     private String pref_screen;
 
@@ -135,6 +142,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         setPrefScreen(R.xml.main_pref_screen);
         setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
+
+        sp_store = getApplicationContext().getSharedPreferences(SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+
+        if(sp_store.getBoolean(KEY_PRO_UNLOCKED, false))
+            unlockPro();
 
         for (int i=0; i < PARENTS.length; i++)
             setEnablednessOfDeps(i);
@@ -380,6 +392,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private void unlockPro() {
         // Save unlocked status to sp_store
-        // remove button
+        // Remove button
+        // Cycle through PRO_ONLY_KEYS and enable each
     }
 }
