@@ -53,8 +53,6 @@
   <string name="help_cat_contact" formatted="false">Kontaktai</string>
   <string name="pref_hint" formatted="false">Patarimas: Spauskite MENU pagalbai.</string>
   <string name="pref_cat_keyguard" formatted="false">Ekrano / Klaviatūros Užraktas</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Išeiti po perjungimo</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Išjungti pagrindinį langą po įjungimo/išjungimo?</string>
   <string name="pref_auto_disable" formatted="false">Ekrano Užrakto Auto-išjugimas</string>
   <string name="pref_auto_disable_summary" formatted="false">Išjungti ekrano užraktą kai įkraunama?</string>
   <string name="boot_pref_always" formatted="false">Visada</string>

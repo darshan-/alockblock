@@ -61,9 +61,6 @@
   <string name="pref_hint" formatted="false">TIPP: Segítséghez nyomja meg a MENÜ gombot!</string>
   <string name="pref_cat_keyguard" formatted="false">Képernyő-/billentyűzár</string>
   <string name="pref_cat_keyguard_help" formatted="false">Az Android megengedi, hogy az alkalmazások letiltsák és újra engedélyezzék a képernyőzárat. Ezen túlmenően azonban semmilyen hatása nincsen. — Pl. nem lehet megadni, hogy melyik billentyűvel záródjon le vagy oldódjon fel.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Kilépés a váltás után</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Tiltás/engedélyezés után egyből bezárja a főablakot?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Ez a funkció azok számára készült, akiknek minden billentyű leütés (vagy képernyő érintés) számít. Ha egyszerűen csak le akarja tiltani a képernyőzárat, majd folytatni amit csinált, ez megkíméli attól, hogy a VISSZA gombbal kelljen bajlódnia. Csak húzza le az értesítési területet, érintse meg a Battery Indicator ikonját, majd a váltó gombot! Három érintés, és ott folytatja, ahol abbahagyta.\n\nNyilván csak akkor engedélyezheti ezt, ha az előző opció tiltva van, illetve megfordítva.</string>
   <string name="pref_auto_disable" formatted="false">Képernyőzár automatikus tiltása</string>
   <string name="pref_auto_disable_summary" formatted="false">Letiltja a képernyőzárat töltés közben?</string>
   <string name="pref_auto_disable_help" formatted="false">Ha bejelöli, a Battery Indicator letiltja a képernyőzárat töltéskor, és amikor a készülék nem töltődik, újra bekapcsolja.\n\nNote that with this option enabled, you will still have to manually pass through the lock screen once before it will be auto-disabled.</string>

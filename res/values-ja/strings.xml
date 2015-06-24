@@ -65,9 +65,6 @@
   <string name="pref_main_notification_priority" formatted="false">メイン通知の優先度</string>
   <string name="pref_cat_keyguard" formatted="false">ロック画面 / キーガード</string>
   <string name="pref_cat_keyguard_help" formatted="false">あなたがおそらくロック画面として使用している \"キーガード\" と呼ばれるアプリを、Android が無効にしたり、再度有効にできるようにします。 しかし、単に無効にしたり、再度有効にするだけで、 どのキーでロック解除するかなど、それ以上の制御はありません。</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">切り替え後に終了する</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">無効/再度有効にした後にすぐメインウインドウを終了しますか?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">それぞれのキーストロークが (またはタッチスクリーンを押すのが) 煩わしい方は、これを有効にしたくなるかもしれません。 あなたの目的が単にロック画面を無効にしたり、再度有効にするだけで、 前の操作にそのまま戻りたい場合は、これで戻るボタンを押す必要がなくなります。 通知バーを引き下げて BatteryBot を選択して、ロック画面を切り替える ボタンを押すだけです。画面を 3 回押すと前の操作に戻ります。\n\n明らかに、前の設定が無効になっている場合のみ、有効にすることができます。 あるいは、その逆です。</string>
   <string name="pref_auto_disable" formatted="false">ロック画面を自動的に無効にする</string>
   <string name="pref_auto_disable_summary" formatted="false">充電中にロック画面を無効にしますか?</string>
   <string name="pref_auto_disable_help" formatted="false">チェックした場合、デバイスに充電プラグが差し込まれると、 BatteryBot はロック画面を無効にします。プラグを抜くと 再度有効にします。\n\nこのオプションを有効にしても、自動的に無効になる前に ロックされた画面は、手動で一度ロック解除する必要があることに ご注意ください。</string>

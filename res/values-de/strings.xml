@@ -61,8 +61,6 @@
   <string name="help_contact" formatted="false">Wenn Sie eine Frage,ein Problem oder einen Kommentar haben, teilen Sie es uns bitte unter <a href="mailto:support@batterybot.info">E-Mail</a>.</string>
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="pref_cat_keyguard" formatted="false">Bildschirm- und Tastatursperre</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Nach Umschalten verlassen</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Hauptfenster unmittelbar nach dem Ein-/Ausschalten verlassen?</string>
   <string name="pref_auto_disable" formatted="false">Bildschirmsperre automatisch aufheben</string>
   <string name="pref_auto_disable_summary" formatted="false">Bildschirmsperre aufheben, wenn Gerät geladen wird?</string>
   <string name="boot_pref_always" formatted="false">Immer</string>

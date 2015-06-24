@@ -51,9 +51,6 @@
   <string name="pref_hint" formatted="false">Pulse MENU para ver la ayuda.</string>
   <string name="pref_cat_keyguard" formatted="false">Pantalla de bloqueo</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android permite a las aplicaciones activar y desactivar la pantalla de bloqueo (\"Keyguard\"), pero solamente permite activarla y desactivarla, no se puede controlar, por ejemplo, qué teclas activan la pantalla.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Cerrar ventana</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">¿Cerrar la ventana principal inmediatamente después de activar/desactivar?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Si quiere simplemente poder activar o desactivar la pantalla de bloqueo y volver a lo que estaba haciendo, esto le evita tener que pulsar la tecla ATRÁS. Simplemente baje la barra de notificaciones, pulse sobre el icono de Battery Indicator, y pulse el botón para activar/desactivar la pantalla de bloqueo.\n\nPor motivos obvios, sólo puede activar esto si la opción anterior está desactivada, y viceversa.</string>
   <string name="pref_auto_disable" formatted="false">Desactivar en carga</string>
   <string name="pref_auto_disable_summary" formatted="false">¿Desactivar automáticamente la pantalla de bloqueo cuando el teléfono esté cargando?</string>
   <string name="pref_auto_disable_help" formatted="false">Si está activa, siempre que el dispositivo se esté cargando Battery Indicator desactivará la pantalla de bloqueo, y volverá a activarla cuando se desconecte.\n\nNota: aun con esta opción activada, deberá pasar manualmente por la pantalla de bloqueo una primera vez antes de que se desactive automáticamente.</string>

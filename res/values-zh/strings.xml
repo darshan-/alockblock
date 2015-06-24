@@ -42,9 +42,6 @@
   <string name="pref_hint" formatted="false"><b>提示：</b>單擊「選單」獲取說明。</string>
   <string name="pref_cat_keyguard" formatted="false">螢幕/鍵盤鎖</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android系統允許軟體禁用或恢復所謂的「鍵盤/螢幕鎖」功能。除此之外，其他諸如設定喚醒快捷鍵的功能均無法實現。</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">切換後退出</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">確認在禁用/恢復自動鎖屏後退出主視窗？</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">如果您發現按鍵（或觸摸屏點擊）異常，可勾選此項以實現快速禁用/恢復自動鎖屏功能並返回之前行為。您僅需下拉狀態列，點擊電量指示器圖標，觸摸切換按鈕，三次點擊即可進行切換並返回之前的行為。\n由於系統原因，您僅在勾選了前一選項後，本選項才可用。</string>
   <string name="pref_auto_disable" formatted="false">自動禁用自動鎖屏</string>
   <string name="pref_auto_disable_summary" formatted="false">確認在充電式禁用自動鎖屏？</string>
   <string name="pref_auto_disable_help" formatted="false">若勾選此項，則在充電時，電量指示器將禁用自動鎖屏功能，並在拔下電源後恢復系統預設值。\n\n需注意的是，即使勾選了此項，自動禁用自動鎖屏前，螢幕鎖界面仍將出現一次。</string>

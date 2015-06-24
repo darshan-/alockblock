@@ -58,9 +58,6 @@
   <string name="pref_main_notification_priority" formatted="false">Prioriteit van melding</string>
   <string name="pref_cat_keyguard" formatted="false">Schermvergendeling</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android geeft apps toestemming om de schermvergrendeling aan en uit te schakelen.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Sluiten na schakelen</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Sluit hoofdvenster meteen na wijzigen van schermvergrendeling</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Als je minder wilt klikken kun je deze optie aanzetten.</string>
   <string name="pref_auto_disable" formatted="false">Schermvergrendeling automatisch uitschakelen</string>
   <string name="pref_auto_disable_summary" formatted="false">Voorkom schermvergrendeling tijdens opladen</string>
   <string name="pref_auto_disable_help" formatted="false">Als je dit aanzet zal de schermvergrendeling automatisch uitschakelen tijdens het opladen.</string>

@@ -52,8 +52,6 @@
   <string name="pref_hint" formatted="false">Tip: Stiskněte MENU pro nápovědu.</string>
   <string name="pref_cat_keyguard" formatted="false">Zámek obrazovky / Ochrana klávesnice</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android dovoluje aplikaci zakázat a obnovit zámek obrazovky. Kromě této jednoduché funkcionality není možno nastavit nic víc. Nemůžete nastavit například která klávesa bude bude zámek ovládat.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Ukončit po přepnutí</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Ukončit hlavní okno okamžitě po zakázání/obnovení ?</string>
   <string name="pref_auto_disable" formatted="false">Automaticky zakázat zámek obrazovky</string>
   <string name="pref_auto_disable_summary" formatted="false">Zakázat zámek obrazovky v průběhu nabíjení ?</string>
   <string name="boot_pref_always" formatted="false">Vždy</string>

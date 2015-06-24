@@ -43,9 +43,6 @@
   <string name="pref_hint" formatted="false"><b>提示：</b>单击“菜单”获取帮助。</string>
   <string name="pref_cat_keyguard" formatted="false">屏幕/键盘锁</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android系统允许软件禁用或恢复所谓的“键盘/屏幕锁”功能。除此之外，其他诸如设置唤醒快捷键的功能均无法实现。</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">切换后退出</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">确认在禁用/恢复自动锁屏后退出主窗口？</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">如果您发现按键（或触摸屏点击）异常，可勾选此项以实现快速禁用/恢复自动锁屏功能并返回之前行为。您仅需下拉通知栏，点击电量指示器图标，触摸切换按钮，三次点击即可进行切换并返回之前的行为。 由于系统原因，您仅在勾选了前一选项后，本选项才可用。</string>
   <string name="pref_auto_disable" formatted="false">自动禁用自动锁屏</string>
   <string name="pref_auto_disable_summary" formatted="false">确认在充电式禁用自动锁屏？</string>
   <string name="pref_auto_disable_help" formatted="false">若勾选此项，则在充电时，电量指示器将禁用自动锁屏功能，并在拔下电源后恢复系统默认值。 需注意的是，即使勾选了此项，自动禁用自动锁屏前，屏幕锁界面仍将出现一次。</string>

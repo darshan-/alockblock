@@ -38,11 +38,18 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import java.util.Locale;
+
+import com.darshancomputing.alockblock.iab.IabHelper;
+import com.darshancomputing.alockblock.iab.IabResult;
+import com.darshancomputing.alockblock.iab.Inventory;
+import com.darshancomputing.alockblock.iab.Purchase;
+
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String SETTINGS_FILE = "com.darshancomputing.alockblock_preferences";
@@ -68,6 +75,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                                             KEY_ALWAYS_SHOW_NOTIFICATION,
                                                                             KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
     };
+
+    private static final String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqC3K734TqYyYxMq1OXq1PlCTrFMS/hke/kxulUefLAiptysQXtDlX6epQJBObzY/3Kw/rb+k6df4GtNHr8FrZ8dyYwDIE4YvnERzEErVc6A5x7gJ3KUe8E47vPQ/MnRMhqu/O16t5aSJrUwd9/cMv32xmHRTpDA/qfOdP+BA0lxovp9HbGliZn56N6cOBFTEL8BAdCLiFiuToLCtHXf12eOS954bucUNr+vIiYXoT4S8C6goauvKhiqApyI+bPsh67yLtSD98IqESQEkDmcr7eAHSuc3NdX7VvydeDxTzBvbdyyFRWzRqK6X9ac7IABdyUmSsmzfqj/d7WMv62zhEwIDAQAB";
+
+    private static final String SKU_PRO = "pro_features";
+    private IabHelper mHelper;
+
+    private static final String LOG_TAG = "A Lock Block - SettingsActivity";
+
 
     private Intent biServiceIntent;
     private Messenger serviceMessenger;
@@ -311,5 +326,60 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else {
             pref.setSummary(res.getString(R.string.currently_disabled));
         }
+    }
+
+    public void unlockButtonClick(android.view.View v) {
+        mHelper = new IabHelper(this, base64EncodedPublicKey);
+        mHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
+            public void onIabSetupFinished(IabResult result) {
+                if (!result.isSuccess()) {
+                    Log.d(LOG_TAG, "Problem setting up In-app Billing: " + result);
+                    mHelper.dispose();
+                } else {
+                    checkInventory();
+                }
+            }
+        });
+    }
+
+    private void checkInventory() {
+        IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
+            public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
+                if (result.isFailure()) {
+                    Log.d(LOG_TAG, "Problem querying inventory!");
+                    mHelper.dispose();
+                } else {
+                    if (inventory.hasPurchase(SKU_PRO)) {
+                        unlockPro();
+                        mHelper.dispose();
+                    } else {
+                        launchPurchaseFlow();
+                    }
+                }
+            }
+        };
+
+        mHelper.queryInventoryAsync(mGotInventoryListener);
+    }
+
+    private void launchPurchaseFlow() {
+        IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener = new IabHelper.OnIabPurchaseFinishedListener() {
+            public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
+                if (result.isFailure()) {
+                    Log.d(LOG_TAG, "Error purchasing: " + result);
+                } else if (purchase.getSku().equals(SKU_PRO)) {
+                    unlockPro();
+                }
+
+                mHelper.dispose();
+            }
+        };
+
+        mHelper.launchPurchaseFlow(this, SKU_PRO, 1, mPurchaseFinishedListener, "");
+    }
+
+    private void unlockPro() {
+        // Save unlocked status to sp_store
+        // remove button
     }
 }

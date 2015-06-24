@@ -65,9 +65,6 @@
   <string name="pref_main_notification_priority" formatted="false">اولوية الاشعارات الرئيسية</string>
   <string name="pref_cat_keyguard" formatted="false">قفل الشاشة / حارس المفاتيح</string>
   <string name="pref_cat_keyguard_help" formatted="false">الاندرويد عادة يقوم بتعطيل وتمكين حارس المفاتيح وانت تعتقد انه مثل قفل الشاشة عند اعادة تكرار هذه الحالة سوف تفقد السيطرة على هاتفك كمثال انك لاتستطيع ان توقد شاشة هاتفك</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">خروج بعد التبديل</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">خروج اطار رئيسي مباشرة عندما يمكن ويعطل؟</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">اذا كنت من الاشخص الذين يملكون عملا شاق سوف تحتاج لتمكين قفل الشاشة لاتحتاج الى اعادة فتح وقفل الشاشة وسوف تعود الى ما كنت تفعله ببساطة ويكمنه تمكين الخيار من الاعدادات الخاصة بالتطبيق التي تجدها عند سحب الشريط العلوي\n\nلاسباب واضحة يتم تمكين هذا الخيار واذا لم يعجبك فيمكنك تعطيله</string>
   <string name="pref_auto_disable" formatted="false">قفل الشاشة بشكل اوتوماتيكي</string>
   <string name="pref_auto_disable_summary" formatted="false">تعطيل قفل الشاشة عند السحن</string>
   <string name="pref_auto_disable_help" formatted="false">اذا تم تمكين هذا الخيار فسوف يتم تعطيل قفل الشاشة بشكل اوتوماتيكي عند الشحن وظهور علامة موصول اما اذا فصل الجهاز فسوف يمكن قفل الشاشة مرة اخرى\n\nان هذا الخيار يعتبر مفيد في العمل الشاق و القيادة ايضا</string>

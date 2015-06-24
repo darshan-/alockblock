@@ -53,8 +53,6 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Nápoveda: pre pomoc stlačte MENU.</string>
   <string name="pref_cat_keyguard" formatted="false">Zámok obrazovky / Zámok klávesnice</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Ukončiť po prepnutí</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Ukončiť hlavné okno ihneď po vypnutí / zapnutí?</string>
   <string name="pref_auto_disable" formatted="false">Auto-vypnutie zámku obrazovky</string>
   <string name="pref_auto_disable_summary" formatted="false">Vypnúť zámok obrazovky keď sa nabíja?</string>
   <string name="boot_pref_always" formatted="false">Vždy</string>

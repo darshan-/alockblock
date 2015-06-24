@@ -93,6 +93,7 @@
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="com.android.vending.BILLING" />
 
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 

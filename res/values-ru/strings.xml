@@ -65,9 +65,6 @@
   <string name="pref_main_notification_priority" formatted="false">Приоритет главного уведомления</string>
   <string name="pref_cat_keyguard" formatted="false">Блокировка экрана / клавиатуры</string>
   <string name="pref_cat_keyguard_help" formatted="false">Система Android разрешает приложениям включать или отключать так называемую блокировку экрана / клавиатуры. Более детальных настроек не существует. К примеру, нельзя указать кнопки включения экрана.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Выход после переключения</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Выйти из главного окна сразу после переключения?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Если для вас важно каждое прикосновение к экрану, вы можете захотеть включить эту опцию. Если нужно просто отключить или включить блокировку экрана, а затем вернуться к своим занятиям, это избавит вас от использования кнопки BACK (Назад). Просто раскройте панель уведомления, коснитесь BatteryBot, затем коснитесь этого переключателя: всего три касания и вы вернулись к своим делам.\n\nОчевидно, что включить эту опцию возможно только при выключенной предыдущей настройке и наоборот.</string>
   <string name="pref_auto_disable" formatted="false">Автоматически отключить блокировку экрана</string>
   <string name="pref_auto_disable_summary" formatted="false">Отключить блокировку экрана во время зарядки?</string>
   <string name="pref_auto_disable_help" formatted="false">Если выбрано, то при каждом подключении устройства к сети BatteryBot отключит блокировку экрана, а при каждом отключении от сети включит ее вновь.</string>
