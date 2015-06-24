@@ -62,6 +62,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
     public static final String KEY_FIRST_RUN = "first_run";
+    public static final String KEY_UNLOCK_PRO = "unlock_pro";
     public static final String KEY_PRO_UNLOCKED = "pro_unlocked";
 
     private static final String[] PARENTS    = {};
@@ -347,6 +348,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 if (!result.isSuccess()) {
                     Log.d(LOG_TAG, "Problem setting up In-app Billing: " + result);
                     mHelper.dispose();
+                    mHelper = null;
                 } else {
                     checkInventory();
                 }
@@ -360,10 +362,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 if (result.isFailure()) {
                     Log.d(LOG_TAG, "Problem querying inventory!");
                     mHelper.dispose();
+                    mHelper = null;
                 } else {
                     if (inventory.hasPurchase(SKU_PRO)) {
+                        //mHelper.consumeAsync(inventory.getPurchase(SKU_PRO), null); // Consume for testing, to be able to re-buy
                         unlockPro();
                         mHelper.dispose();
+                        mHelper = null;
                     } else {
                         launchPurchaseFlow();
                     }
@@ -384,15 +389,37 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 }
 
                 mHelper.dispose();
+                mHelper = null;
             }
         };
 
         mHelper.launchPurchaseFlow(this, SKU_PRO, 1, mPurchaseFinishedListener, "");
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (mHelper == null) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (!mHelper.handleActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
+        } else {
+            Log.d(LOG_TAG, "onActivityResult handled by IABUtil.");
+        }
+    }
+
     private void unlockPro() {
-        // Save unlocked status to sp_store
-        // Remove button
-        // Cycle through PRO_ONLY_KEYS and enable each
+        if (! sp_store.getBoolean(KEY_PRO_UNLOCKED, false)) {
+            SharedPreferences.Editor editor = sp_store.edit();
+            editor.putBoolean(KEY_PRO_UNLOCKED, true);
+            editor.commit();
+        }
+
+        mPreferenceScreen.removePreference(mPreferenceScreen.findPreference(KEY_UNLOCK_PRO));
+
+        for (int i=0; i < PRO_ONLY_SETTINGS.length; i++)
+            mPreferenceScreen.findPreference(PRO_ONLY_SETTINGS[i]).setEnabled(true);
     }
 }

@@ -13,6 +13,7 @@
   />
 
   <Preference
+      android:key="unlock_pro"
       android:layout="@layout/unlock_pro"
   />
 
