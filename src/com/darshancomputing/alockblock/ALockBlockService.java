@@ -32,6 +32,8 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -65,6 +67,9 @@ public class ALockBlockService extends Service {
     private boolean holding_lock = false;
     private android.os.Vibrator mVibrator;
     private android.media.AudioManager mAudioManager;
+
+    private Bitmap largeIconU;
+    private Bitmap largeIconL;
 
     private Context context;
     private Resources res;
@@ -116,6 +121,19 @@ public class ALockBlockService extends Service {
 
         loadSettingsFiles(context);
         sdkVersioning();
+
+        // Version 11+ is needed to get large icon dimensions.  Versions prior to 11 ignore large icon anyway.
+        //   Recent versions scale for us, but older (11+) versions don't scale, so we need to.
+        if (android.os.Build.VERSION.SDK_INT >= 11) {
+            int liw = getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_wid‌​th);
+            int lih = getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_hei‌​ght);
+
+            largeIconU = BitmapFactory.decodeResource(getResources(), R.drawable.padlock_unlocked);
+            largeIconL = BitmapFactory.decodeResource(getResources(), R.drawable.padlock_locked);
+
+            largeIconU = Bitmap.createScaledBitmap(largeIconU, liw, lih, false);
+            largeIconL = Bitmap.createScaledBitmap(largeIconL, liw, lih, false);
+        }
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 
@@ -315,6 +333,7 @@ public class ALockBlockService extends Service {
 
         NotificationCompat.Builder kgunb = new NotificationCompat.Builder(this)
             .setSmallIcon(R.drawable.kg_unlocked)
+            .setLargeIcon(largeIconU)
             .setContentTitle("Lock Screen Disabled")
             .setContentText("A Lock Block")
             .setContentIntent(mainWindowPendingIntent)
@@ -344,6 +363,7 @@ public class ALockBlockService extends Service {
 
         NotificationCompat.Builder kgunb = new NotificationCompat.Builder(this)
             .setSmallIcon(R.drawable.kg_unlocked)
+            .setLargeIcon(largeIconL)
             .setContentTitle("Lock Screen Enabled")
             .setContentText("A Lock Block")
             .setContentIntent(mainWindowPendingIntent)
@@ -366,6 +386,7 @@ public class ALockBlockService extends Service {
 
         NotificationCompat.Builder kgunb = new NotificationCompat.Builder(this)
             .setSmallIcon(R.drawable.kg_unlocked)
+            .setLargeIcon(largeIconU)
             .setContentTitle("Please Unlock the Screen")
             .setContentText("A Lock Block")
             .setContentIntent(mainWindowPendingIntent)
