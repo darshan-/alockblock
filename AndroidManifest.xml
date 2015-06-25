@@ -4,7 +4,7 @@
     package="com.darshancomputing.alockblock"
     android:sharedUserId="com.darshancomputing.alockblock"
     android:versionCode="1"
-    android:versionName="1.0.0"
+    android:versionName="1.0.0-dev"
 >
   <application
       android:label="@string/app_full_name"

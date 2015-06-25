@@ -287,13 +287,14 @@ public class ALockBlockService extends Service {
 
     private void setEnablednessOfKeyguard(boolean enabled) {
         if (enabled) {
+            mHandler.removeCallbacks(runDisableKeyguard);
+
             minimize();
 
             if (! holding_lock) return;
 
             if (kl != null) {
                 unregisterReceiver(mUserPresentReceiver);
-                mHandler.removeCallbacks(runDisableKeyguard);
                 kl.reenableKeyguard();
                 kl = null;
             }
