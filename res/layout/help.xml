@@ -23,14 +23,6 @@
     <TextView style="@style/help_cat"  android:text="@string/help_cat_open_source" />
     <TextView android:id="@+id/open_source" style="@style/help_text" android:text="@string/help_open_source" />
 
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_acknowledgments" />
-    <TextView android:id="@+id/acknowledgments" style="@style/help_text" android:text="@string/help_acknowledgments" />
-
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_translations" />
-    <TextView android:id="@+id/translations" style="@style/help_text" android:text="@string/help_translations" />
-    <TextView style="@style/help_pref" android:text="@string/help_subcat_translators" />
-    <TextView style="@style/help_text" android:text="@string/help_translators_list" />
-
     <TextView style="@style/help_cat"  android:text="@string/help_cat_contact" />
     <TextView android:id="@+id/contact" style="@style/help_text" android:text="@string/help_contact" />
 

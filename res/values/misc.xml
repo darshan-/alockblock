@@ -20,32 +20,6 @@
   <bool name="api_level_16_plus">false</bool>
   <bool name="api_level_21_plus">false</bool>
 
-  <string name="help_translators_list">
-    Matthew McBaul(包明)
-    \nGonzalo Rodríguez Píriz
-    \nskwt
-    \nGabriele Ravanetti
-    \nPaul Fiorentino
-    \nPetr BOEHM
-    \nKorenisko
-    \nGabor Kovacs
-    \nRudy Baardman
-    \nBoudewijn
-    \nMiltos (Κύπρος)
-    \nDenis Bence
-    \nDaniel Wiatr
-    \nFabian S.
-    \nALI SAFA
-    \nNaofumi Fukue
-    \nМихаил Одувалов
-  </string>
-
-  <string-array name="boot_pref_entries">
-    <item>@string/boot_pref_always</item>
-    <item>@string/boot_pref_never</item>
-    <item>@string/boot_pref_if_running</item>
-  </string-array>
-
   <string-array name="notification_priority_entries">
     <item>@string/notification_priority_max</item>
     <item>@string/notification_priority_high</item>
