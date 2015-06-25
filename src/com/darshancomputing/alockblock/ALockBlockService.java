@@ -128,11 +128,14 @@ public class ALockBlockService extends Service {
             int liw = getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_wid‌​th);
             int lih = getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_hei‌​ght);
 
-            largeIconU = BitmapFactory.decodeResource(getResources(), R.drawable.padlock_unlocked);
-            largeIconL = BitmapFactory.decodeResource(getResources(), R.drawable.padlock_locked);
+            Bitmap largeIconUo = BitmapFactory.decodeResource(getResources(), R.drawable.padlock_unlocked_small);
+            Bitmap largeIconLo = BitmapFactory.decodeResource(getResources(), R.drawable.padlock_locked_small);
 
-            largeIconU = Bitmap.createScaledBitmap(largeIconU, liw, lih, false);
-            largeIconL = Bitmap.createScaledBitmap(largeIconL, liw, lih, false);
+            largeIconU = Bitmap.createScaledBitmap(largeIconUo, liw, lih, false);
+            largeIconL = Bitmap.createScaledBitmap(largeIconLo, liw, lih, false);
+
+            largeIconUo.recycle();
+            largeIconLo.recycle();
         }
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
