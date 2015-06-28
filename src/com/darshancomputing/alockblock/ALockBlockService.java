@@ -39,7 +39,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -286,6 +285,8 @@ public class ALockBlockService extends Service {
     }
 
     private void setEnablednessOfKeyguard(boolean enabled) {
+        updateClientKeyguardStatus();
+
         if (enabled) {
             mHandler.removeCallbacks(runDisableKeyguard);
 
@@ -320,8 +321,6 @@ public class ALockBlockService extends Service {
                 mHandler.postDelayed(runDisableKeyguard, 300);
             }
         }
-
-        updateClientKeyguardStatus();
     }
 
     private void maximize() {
