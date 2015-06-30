@@ -151,16 +151,18 @@ public class ALockBlockService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        String action = intent.getStringExtra(EXTRA_ACTION);
+        if (intent != null) {
+            String action = intent.getStringExtra(EXTRA_ACTION);
 
-        if (ACTION_REENABLE.equals(action)) {
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false);
-            editor.commit();
-        } else if (ACTION_DISABLE.equals(action)) {
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, true);
-            editor.commit();
+            if (ACTION_REENABLE.equals(action)) {
+                SharedPreferences.Editor editor = sp_store.edit();
+                editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, false);
+                editor.commit();
+            } else if (ACTION_DISABLE.equals(action)) {
+                SharedPreferences.Editor editor = sp_store.edit();
+                editor.putBoolean(ALockBlockService.KEY_DISABLE_LOCKING, true);
+                editor.commit();
+            }
         }
 
         reloadSettings(false);
